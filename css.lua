@@ -714,8 +714,8 @@ FloatingFrame.Name = "FloatingFrame"
 FloatingFrame.Parent = FloatingButton
 FloatingFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 FloatingFrame.BackgroundTransparency = 1
-FloatingFrame.Position = UDim2.new(0, 50, 0.5, 0)
-FloatingFrame.Size = UDim2.new(0, 40, 0, 40)
+FloatingFrame.Position = UDim2.new(0, 35, 0.5, 0)
+FloatingFrame.Size = UDim2.new(0, 30, 0, 30)
 
 FloatingButtonFrame.Name = "Button"
 FloatingButtonFrame.Parent = FloatingFrame
@@ -725,7 +725,7 @@ FloatingButtonFrame.Size = UDim2.new(1, 0, 1, 0)
 FloatingButtonFrame.Font = Enum.Font.GothamBold
 FloatingButtonFrame.Text = "🔲"
 FloatingButtonFrame.TextColor3 = Color3.fromRGB(255, 255, 255)
-FloatingButtonFrame.TextSize = 16
+FloatingButtonFrame.TextSize = 10
 FloatingButtonFrame.Visible = false
 FloatingButtonFrame.BackgroundTransparency = 1
 
@@ -769,7 +769,7 @@ end)
 FloatingButtonFrame.MouseEnter:Connect(function()
 	if not dragging then
 		TweenService:Create(FloatingButtonFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {
-			TextSize = 18,
+			TextSize = 12,
 			BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 		}):Play()
 	end
@@ -778,7 +778,7 @@ end)
 FloatingButtonFrame.MouseLeave:Connect(function()
 	if not dragging then
 		TweenService:Create(FloatingButtonFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {
-			TextSize = 16,
+			TextSize = 10,
 			BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 		}):Play()
 	end
@@ -808,7 +808,7 @@ elseif not useStudio then
 end
 
 
-local minSize = Vector2.new(400, 300) -- Reduced minimum size for compact UI
+local minSize = Vector2.new(320, 180) -- Ultra compact for mobile landscape
 local useMobileSizing
 
 if Rayfield.AbsoluteSize.X < minSize.X and Rayfield.AbsoluteSize.Y < minSize.Y then
@@ -1369,8 +1369,8 @@ local function Maximise()
 	TweenService:Create(Topbar.CornerRepair, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(Topbar.Divider, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(dragBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 0.7}):Play()
-	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = useMobileSizing and UDim2.new(0, 380, 0, 200) or UDim2.new(0, 420, 0, 320)}):Play()
-	TweenService:Create(Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 420, 0, 35)}):Play()
+	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = useMobileSizing and UDim2.new(0, 320, 0, 180) or UDim2.new(0, 380, 0, 280)}):Play()
+	TweenService:Create(Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 380, 0, 25)}):Play()
 	TabList.Visible = true
 	task.wait(0.2)
 
@@ -1436,8 +1436,8 @@ local function Unhide()
 	Debounce = true
 	Main.Position = UDim2.new(0.5, 0, 0.5, 0)
 	Main.Visible = true
-	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = useMobileSizing and UDim2.new(0, 380, 0, 200) or UDim2.new(0, 420, 0, 320)}):Play()
-	TweenService:Create(Main.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 420, 0, 35)}):Play()
+	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = useMobileSizing and UDim2.new(0, 320, 0, 180) or UDim2.new(0, 380, 0, 280)}):Play()
+	TweenService:Create(Main.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 380, 0, 25)}):Play()
 	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(Main.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
@@ -2093,7 +2093,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 		TabButton.Title.Text = Name
 		TabButton.Parent = TabList
 		TabButton.Title.TextWrapped = false
-		TabButton.Size = UDim2.new(0, TabButton.Title.TextBounds.X + 30, 0, 30)
+		TabButton.Size = UDim2.new(0, TabButton.Title.TextBounds.X + 20, 0, 25)
 
 		if Image and Image ~= 0 then
 			if typeof(Image) == 'string' and Icons then
@@ -2110,7 +2110,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TabButton.Title.Position = UDim2.new(0, 37, 0.5, 0)
 			TabButton.Image.Visible = true
 			TabButton.Title.TextXAlignment = Enum.TextXAlignment.Left
-			TabButton.Size = UDim2.new(0, TabButton.Title.TextBounds.X + 52, 0, 30)
+			TabButton.Size = UDim2.new(0, TabButton.Title.TextBounds.X + 40, 0, 25)
 		end
 
 
@@ -3614,7 +3614,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	TweenService:Create(LoadingFrame.Subtitle, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
 	TweenService:Create(LoadingFrame.Version, TweenInfo.new(0.2, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
 	task.wait(0.1)
-	TweenService:Create(Main, TweenInfo.new(0.6, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = useMobileSizing and UDim2.new(0, 380, 0, 200) or UDim2.new(0, 420, 0, 320)}):Play()
+	TweenService:Create(Main, TweenInfo.new(0.6, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = useMobileSizing and UDim2.new(0, 320, 0, 180) or UDim2.new(0, 380, 0, 280)}):Play()
 	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 
 	Topbar.BackgroundTransparency = 1
