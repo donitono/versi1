@@ -61,23 +61,23 @@ local function CreateSafeCallback(originalCallback, buttonId)
     end
 end
 
--- Load Rayfield with error handling
+-- Load GameXsan with error handling
 print("XSAN: Loading UI Library...")
 
-local Rayfield
+local GameXsan
 local success, error = pcall(function()
-    print("XSAN: Attempting to load Rayfield...")
-    Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/donitono/Gamer/refs/heads/main/css.lua"))()
-    print("XSAN: Rayfield loadstring executed")
+    print("XSAN: Attempting to load GameXsan...")
+    GameXsan = loadstring(game:HttpGet("https://raw.githubusercontent.com/donitono/Gamer/refs/heads/main/css.lua"))()
+    print("XSAN: GameXsan loadstring executed")
 end)
 
 if not success then
-    warn("XSAN Error: Failed to load Rayfield UI Library - " .. tostring(error))
+    warn("XSAN Error: Failed to load GameXsan UI Library - " .. tostring(error))
     return
 end
 
-if not Rayfield then
-    warn("XSAN Error: Rayfield is nil after loading")
+if not GameXsan then
+    warn("XSAN Error: GameXsan is nil after loading")
     return
 end
 
@@ -85,7 +85,7 @@ print("XSAN: UI Library loaded successfully!")
 
 -- Create Window
 print("XSAN: Creating main window...")
-local Window = Rayfield:CreateWindow({
+local Window = GameXsan:CreateWindow({
     Name = "XSAN Fish It Pro v1.0",
     LoadingTitle = "XSAN Fish It Pro Ultimate",
     LoadingSubtitle = "by XSAN - Ultimate Edition",
@@ -96,7 +96,7 @@ local Window = Rayfield:CreateWindow({
         FileName = "FishItProUltimate"
     },
     KeySystem = false,
-    DisableRayfieldPrompts = false,
+    DisableGameXsanPrompts = false,
     DisableBuildWarnings = false
 })
 
@@ -305,15 +305,15 @@ print("XSAN: Using dynamic location system like old.lua for accuracy")
 
 -- Notification Functions
 local function NotifySuccess(title, message)
-	Rayfield:Notify({ Title = "XSAN - " .. title, Content = message, Duration = 3, Image = "circle-check" })
+	GameXsan:Notify({ Title = "XSAN - " .. title, Content = message, Duration = 3, Image = "circle-check" })
 end
 
 local function NotifyError(title, message)
-	Rayfield:Notify({ Title = "XSAN - " .. title, Content = message, Duration = 3, Image = "ban" })
+	GameXsan:Notify({ Title = "XSAN - " .. title, Content = message, Duration = 3, Image = "ban" })
 end
 
 local function NotifyInfo(title, message)
-	Rayfield:Notify({ Title = "XSAN - " .. title, Content = message, Duration = 4, Image = "info" })
+	GameXsan:Notify({ Title = "XSAN - " .. title, Content = message, Duration = 4, Image = "info" })
 end
 
 -- Analytics Functions
@@ -671,7 +671,7 @@ spawn(function()
                 
                 if #players > 0 then
                     -- Update player list (if dropdown exists, recreate it)
-                    -- For now, we'll use buttons since Rayfield dropdown might not support dynamic updates
+                    -- For now, we'll use buttons since GameXsan dropdown might not support dynamic updates
                 end
             end
         end)
@@ -760,7 +760,7 @@ MainTab:CreateToggle({
             if hybridMode then
                 -- Initialize hybrid auto fish
                 if not hybridAutoFish then
-                    hybridAutoFish = Rayfield.CreateSafeAutoFish({
+                    hybridAutoFish = GameXsan.CreateSafeAutoFish({
                         safeMode = true,
                         perfectChance = hybridPerfectChance,
                         minDelay = hybridMinDelay,
@@ -1090,8 +1090,8 @@ UtilityTab:CreateButton({
     Callback = CreateSafeCallback(function()
         NotifyInfo("XSAN", "Thank you for using XSAN Fish It Pro Ultimate v1.0! The most advanced fishing script ever created.\n\nScript will unload in 3 seconds...")
         wait(3)
-        if game:GetService("CoreGui"):FindFirstChild("Rayfield") then
-            game:GetService("CoreGui").Rayfield:Destroy()
+        if game:GetService("CoreGui"):FindFirstChild("GameXsan") then
+            game:GetService("CoreGui").GameXsan:Destroy()
         end
     end, "unload_script")
 })
@@ -1139,7 +1139,7 @@ spawn(function()
     NotifyInfo("Hotkeys Active!", "HOTKEYS ENABLED:\nF1 - Toggle Auto Fishing\nF2 - Toggle Perfect Cast\nF3 - Toggle Auto Sell Threshold\nF4 - Quick TP to Spawn\nF5 - Save Position\nF6 - Return to Saved Position\n\nCheck PRESETS tab for quick setup!")
     
     wait(3)
-    NotifyInfo("📱 Smart UI!", "RAYFIELD UI SYSTEM:\nRayfield automatically handles UI sizing and responsiveness for all devices!\n\nUI management is now handled by the Rayfield library (css.lua)!")
+    NotifyInfo("📱 Smart UI!", "GameXsan UI SYSTEM:\nGameXsan automatically handles UI sizing and responsiveness for all devices!\n\nUI management is now handled by the GameXsan library (css.lua)!")
     
     wait(3)
     NotifySuccess("� Teleportation Fixed!", "TELEPORTATION SYSTEM FIXED:\n✅ Now uses dynamic locations like old.lua\n✅ Accurate coordinates from workspace\n✅ Better player detection\n✅ More reliable teleportation\n\nCheck TELEPORT tab for perfect locations!")
