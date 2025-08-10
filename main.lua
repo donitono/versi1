@@ -67,7 +67,7 @@ print("XSAN: Loading UI Library...")
 local Rayfield
 local success, error = pcall(function()
     print("XSAN: Attempting to load Rayfield...")
-    Rayfield = loadstring(game:"HttpGet(https://raw.githubusercontent.com/donitono/versi1/refs/heads/main/css.lua"))()
+    Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/donitono/versi1/refs/heads/main/css.lua"))()
     print("XSAN: Rayfield loadstring executed")
 end)
 
